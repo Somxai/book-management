@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag "books.css", "data-turbo-track": "reload" %>
+<p style="color: green"><%= notice %></p>
+<h3> Books List </h3>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Publisher</th>
+      <th>Price</th>
+      <th>Author</th>
+      <th>show</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.publisher %></td>
+        <td><%= book.price %></td>
+        <td><%= book.author.name %></td>
+        <td><%= link_to "Show", book_path(book), class: "btn btn-dark" %></td>
+        <td><%= link_to "Edit", edit_book_path(book), class: "btn btn-dark" %></td>
+        <td><%=  button_to "Delete", book, method: :delete , class:"btn btn-danger" %></td>
+      </tr>
+    <% end %>
+    
+  </tbody>
+</table>
+
+<%= link_to "Create New Book" , new_book_path, class: "btn btn-primary" %>
+
+
